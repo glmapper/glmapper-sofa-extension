@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://sofastack.io/schema/sofaboot"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd"
+       default-autowire="byName">
+
+    <bean id="sampleJvmServiceAnnotation" class="com.glmapper.bridge.impl.SampleJvmServiceAnnotationImpl"/>
+
+    <bean id="simpleSpringBean" class="com.glmapper.bridge.extension.SimpleSpringBean"/>
+
+    <!--扩展点配置-->
+    <bean id="extension" class="com.glmapper.bridge.extension.IExtensionImpl">
+        <property name="word" value="Hello, world"/>
+        <property name="simpleSpringBean" ref= "simpleSpringBean"/>
+    </bean>
+
+    <!-- 简单字符串扩展 -->
+    <sofa:extension-point name="word" ref="extension">
+        <sofa:object class="com.glmapper.bridge.extension.ExtensionDescriptor"/>
+    </sofa:extension-point>
+
+    <!-- 简单 spring bean 扩展 -->
+    <sofa:extension-point name="simpleSpring" ref="extension">
+        <sofa:object class="com.glmapper.bridge.extension.SimpleBeanExtensionDescriptor"/>
+    </sofa:extension-point>
+
+</beans>
