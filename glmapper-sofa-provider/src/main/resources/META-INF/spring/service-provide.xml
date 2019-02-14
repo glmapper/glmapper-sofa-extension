@@ -33,7 +33,7 @@
         <property name="datasourceBean" ref= "datasourceBean"/>
     </bean>
     <!-- 简单 spring bean 扩展 -->
-    <sofa:extension-point name="simpleSpring" ref="datasourceExtension">
+    <sofa:extension-point name="datasourcePoint" ref="datasourceExtension">
         <sofa:object class="com.glmapper.bridge.datasource.DatasourceExtensionDescriptor"/>
     </sofa:extension-point>
 

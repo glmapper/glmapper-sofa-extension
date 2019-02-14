@@ -25,11 +25,11 @@
 
 
     <bean id="oracleDatasourceBean" class="com.glmapper.bridge.custom.OracleDatasourceBean"/>
-    <sofa:extension bean="datasourceExtension" point="simpleSpring">
+    <sofa:extension bean="datasourceExtension" point="datasourcePoint">
         <sofa:content>
-            <simpleSpring>
+            <datasourcePoint>
                 <value>oracleDatasourceBean</value>
-            </simpleSpring>
+            </datasourcePoint>
         </sofa:content>
     </sofa:extension>
 

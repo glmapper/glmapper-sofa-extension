@@ -7,7 +7,7 @@ import com.alipay.sofa.common.xmap.spring.XNodeSpring;
  * @author: guolei.sgl (guolei.sgl@antfin.com) 2019/2/13 10:47 PM
  * @since:
  **/
-@XObject("simpleSpring")
+@XObject("datasourcePoint")
 public class DatasourceExtensionDescriptor {
     @XNodeSpring(value = "value", type = DatasourceBean.class)
     private DatasourceBean value;

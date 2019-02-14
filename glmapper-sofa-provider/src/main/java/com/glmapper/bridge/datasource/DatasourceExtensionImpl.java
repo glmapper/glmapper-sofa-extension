@@ -31,7 +31,7 @@ public class DatasourceExtensionImpl implements DatasourceExtension {
             return;
         }
         for (Object contribution : contributions) {
-            if ("simpleSpring".equals(extensionPoint)) {
+            if ("datasourcePoint".equals(extensionPoint)) {
                 datasourceBean = ((DatasourceExtensionDescriptor) contribution).getValue();
             }
         }
