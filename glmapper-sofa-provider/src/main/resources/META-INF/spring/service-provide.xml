@@ -26,4 +26,15 @@
         <sofa:object class="com.glmapper.bridge.extension.SimpleBeanExtensionDescriptor"/>
     </sofa:extension-point>
 
+    <!-- 默认数据源bean实现-->
+    <bean id="datasourceBean" class="com.glmapper.bridge.datasource.DefaultDataSourceBean"/>
+    <!--暴露扩展点配置-->
+    <bean id="datasourceExtension" class="com.glmapper.bridge.datasource.DatasourceExtensionImpl">
+        <property name="datasourceBean" ref= "datasourceBean"/>
+    </bean>
+    <!-- 简单 spring bean 扩展 -->
+    <sofa:extension-point name="simpleSpring" ref="datasourceExtension">
+        <sofa:object class="com.glmapper.bridge.datasource.DatasourceExtensionDescriptor"/>
+    </sofa:extension-point>
+
 </beans>

@@ -16,6 +16,7 @@
  */
 package com.glmapper.bridge.controller;
 import com.alipay.sofa.runtime.api.annotation.SofaReference;
+import com.glmapper.bridge.datasource.DatasourceExtension;
 import com.glmapper.bridge.extension.IExtension;
 import com.glmapper.bridge.service.SampleJvmService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,13 +36,18 @@ public class TestController {
 
     @SofaReference
     private IExtension extension;
+    @SofaReference
+    DatasourceExtension datasourceExtension;
 
-    @RequestMapping("/annotationImplService")
+    @RequestMapping("/extension")
     public String annotationImplService() throws IOException {
         String say = extension.say();
         extension.getSimpleSpringBean().test();
         System.out.println(say);
         System.out.println( extension.getSimpleSpringBean().test());
+
+        datasourceExtension.getDatasourceBean().getDatasource();
+
         return sampleJvmService.hello();
     }
 
